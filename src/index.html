@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="/dist/output.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+</head>
+
+<body class="bg-gray-900 grid place-items-center place-content-center h-screen">
+  <div class="max-w-7xl flex flex-col gap-5 items-center">
+    <p class="text-gray-100 text-3xl tracking-tight text-center [text-wrap:balance] font-bold">
+      Teori Graf dengan menerapkan Algoritma Dijkstra untuk mencari rute dan
+      jarak terpendek antar dua titik
+    </p>
+    <div class="h-[1px] w-1/2 bg-gray-700"></div>
+    <div class="w-full flex gap-5">
+      <div id="map" class="h-full aspect-video w-3/4">
+      </div>
+      <form action="#" class="w-2/4" id="formRute">
+        <div class="flex flex-col gap-5 w-full">
+          <div class="w-full">
+            <label for="countries" class="text-gray-100 tracking-tight font-semibold mb-1 block">Pilih kota awal</label>
+            <select id="kotaAwal" required
+              class="kota bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none mb-3">
+              <option value="" disabled selected>-- Pilih kota tujuan --</option>
+              <option value="Malang">Malang</option>
+              <option value="Surabaya">Surabaya</option>
+              <option value="Trenggalek">Trenggalek</option>
+              <option value="Wonogiri">Wonogiri</option>
+              <option value="Rembang">Rembang</option>
+              <option value="Semarang">Semarang</option>
+            </select>
+            <label for="countries" class="text-gray-100 tracking-tight font-semibold mb-1 block">Pilih kota
+              tujuan</label>
+            <select id="kotaTujuan" required
+              class="kota bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+              on>
+              <option value="" disabled selected>-- Pilih kota tujuan --</option>
+              <option value="Malang">Malang</option>
+              <option value="Surabaya">Surabaya</option>
+              <option value="Trenggalek">Trenggalek</option>
+              <option value="Wonogiri">Wonogiri</option>
+              <option value="Rembang">Rembang</option>
+              <option value="Semarang">Semarang</option>
+            </select>
+          </div>
+          <button type="submit" id="kirim"
+            class="text-gray-100 bg-indigo-500 hover:bg-indigo-600 rounded tracking-tight font-semibold py-2">
+            Cari rute
+          </button>
+          <div class="bg-gray-800 w-full rounded p-3 hidden box-border" id="hasil">
+            <p class="text-gray-100 font-semibold tracking-tight mb-2">Hasil : </p>
+            <ul class="list-inside list-decimal text-gray-100 tracking-tight text-sm mb-4">
+              <li>Jarak terdekat dari <span class="font-semibold text-indigo-300" id="kotaAwalHasil"></span> ke <span
+                  class="font-semibold text-indigo-300" id="kotaTujuanHasil"></span> adalah <span
+                  class="font-semibold text-indigo-300" id="totalJarak"></span></li>
+              <li>
+                Jalur terdekat : <span class="font-semibold text-indigo-300" id="jalurHasil"></span>
+              </li>
+            </ul>
+            <div class="text-gray-400 text-xs tracking-tight font-semibold">
+              <p>Catatan : </p>
+              <p>Hasil dari jalur terdekat di atas bisa jadi tidak sesuai dengan rute yang muncul di map :)</p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <script src="./js/graf.js"></script>
+</body>
+
+</html>
